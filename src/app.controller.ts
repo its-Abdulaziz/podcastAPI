@@ -9,4 +9,11 @@ export class AppController {
   searchItunes(@Query('search') term: string) {
     return this.appService.searchItunes(term)
   }
+
+  @Get('id')
+  searchForEpisodes(@Query('id') id: string) {
+    return this.appService.searchForEpisodes(id)
+  }
+
+  
 }
