@@ -1,14 +1,18 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY --chown=node:node package*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
+ENV NODE_ENV production
+
 RUN npm run build
+
+USER node
 
 EXPOSE 3000
 
